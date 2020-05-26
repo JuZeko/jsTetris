@@ -1,0 +1,11 @@
+.canvas {
+background-color: azure;
+position: absolute;
+border: solid black 2px;
+margin-left: 40%;
+margin-top: 10%;
+height: 75vh;
+width: 30vw;
+
+}
+
