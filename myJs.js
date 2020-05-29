@@ -47,12 +47,9 @@ function draw(figura) {
 			figura.greitisY = 3;
 			figura.kordinateY = 0;
 		}
-
-
 	} 
 
 
-	
 
 
 
@@ -70,9 +67,31 @@ function draw(figura) {
 		figura.kordinateY = 0;
 		figura.kordinateX = 90;
 
-		suma +=30;
-		if(suma == 300){
-			smth.splice(0, 10);
+		
+	}
+
+	for (var j = 0; j < smth.length; j++) {
+		let suma = 0;
+		for(var jj = j+1; jj < smth.length; jj++)
+		{
+
+			
+			if (smth[j].y == smth[jj].y && smth[j].x != smth[jj].x) {
+				suma +=30;
+				
+			}
+
+			if(suma == 270){
+
+				let a = smth[j].y;
+				smth = smth.filter(item => item.y != smth[j].y);
+				for (var i = 0; i < smth.length; i++) {
+					
+					smth[i].y += 30;
+
+				}
+			}
+
 		}
 	}
 
@@ -81,17 +100,16 @@ function draw(figura) {
 
 
 
-
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
-	
-	ctx.fillRect(figura.kordinateX, figura.kordinateY, 30, 30);
+
+	ctx.fillRect(figura.kordinateX, figura.kordinateY, 30, 50);
 
 	for (var i = smth.length - 1; i >= 0; i--) {
 
 		ctx.fillRect(smth[i].x, smth[i].y, 30, 30);
 
 	}
-	
+
 }
 
 
@@ -109,7 +127,8 @@ function check(e) {
     if(code == 39){
     	figura.kordinateX +=30;
     }
-	if(code == 38){
-    	figura.kordinateY +=30;
+    if(code == 40){
+    	figura.kordinateY = 120;
+    	figura.greitisY = 0;
     }
 }
